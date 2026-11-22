@@ -1,0 +1,51 @@
+{
+  "name": "divmod4",
+  "version": "0.1.0",
+  "description": "Division with a remainder, every way: truncated (JavaScript's %), away from zero (its opposite), floored (Python), ceiling, Euclidean and nearest. For numbers and BigInts, no dependencies.",
+  "keywords": [
+    "divmod",
+    "modulo",
+    "mod",
+    "remainder",
+    "euclidean",
+    "floor division",
+    "ceiling division",
+    "bigint",
+    "integer division"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buggypather/divmod4.git"
+  },
+  "homepage": "https://github.com/buggypather/divmod4#readme",
+  "bugs": {
+    "url": "https://github.com/buggypather/divmod4/issues"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.1"
+  }
+}

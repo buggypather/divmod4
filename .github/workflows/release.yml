@@ -1,0 +1,22 @@
+# A GitHub release (tag v*) tests, builds and publishes to npm with trusted publishing (no token):
+# set it up once on npmjs.com → the package's Settings → Trusted publishing → GitHub Actions,
+# with buggypather / divmod4 / release.yml. The very first version is published by hand.
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest
+      - run: npm ci
+      - run: npm publish --provenance --access public
